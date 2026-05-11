@@ -24,7 +24,6 @@ jobs:
       run: mvn clean package
 
     - name: Upload JAR/WAR Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: java-build-artifact
-        path: target/*.jar
+      run: |
+        echo "Deploying the Applicaiton"
+        echo "jar file strores in /target"
