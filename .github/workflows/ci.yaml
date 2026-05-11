@@ -9,6 +9,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: java-devops-project
+
     steps:
 
     - name: Checkout Code
@@ -24,6 +28,7 @@ jobs:
       run: mvn clean package
 
     - name: Upload JAR/WAR Artifact
-      run: |
-        echo "Deploying the Applicaiton"
-        echo "jar file strores in /target"
+      uses: actions/upload-artifact@v4
+      with:
+        name: java-build-artifact
+        path: java-devops-project/target/*.jar
